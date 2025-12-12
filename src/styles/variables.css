@@ -1,0 +1,72 @@
+
+:root {
+  /* ===== COLORES PRINCIPALES ===== */
+  --color-primary: #B8EAFF;
+  --color-secondary: #6B8AFD;
+  --color-accent: #FF6B9D;
+  
+  /* ===== COLORES NEUTROS ===== */
+  --color-text: #2D3748;
+  --color-text-secondary: #718096;
+  --color-background: #F7FAFC;
+  --color-border: #E2E8F0;
+  --color-surface: #FFFFFF;
+  
+  /* ===== COLORES SEMÁNTICOS ===== */
+  --color-success: #48BB78;
+  --color-warning: #ED8936;
+  --color-focus: #9F7AEA;
+  
+  /* ===== TIPOGRAFÍA ===== */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Escala Móvil */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px - small */
+  --font-size-base: 1rem;       /* 16px - body */
+  --font-size-md: 1.25rem;      /* 20px - h3 */
+  --font-size-lg: 1.5rem;       /* 24px - h2 */
+  --font-size-xl: 2rem;         /* 32px - h1 */
+  --font-size-2xl: 2.5rem;      /* 40px */
+  
+  /* Pesos de fuente */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.75;
+  
+  /* ===== ESPACIADO ===== */
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.5rem;     /* 24px */
+  --space-xl: 2rem;       /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  --space-3xl: 4rem;      /* 64px */
+  
+  /* ===== BORDES ===== */
+  --border-radius-sm: 0.25rem;  /* 4px */
+  --border-radius-md: 0.5rem;   /* 8px */
+  --border-radius-lg: 0.75rem;  /* 12px */
+  --border-radius-xl: 1rem;     /* 16px */
+  --border-radius-full: 9999px;
+  
+  /* ===== SOMBRAS ===== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  
+  /* ===== BREAKPOINTS ===== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
