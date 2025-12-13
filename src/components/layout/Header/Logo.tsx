@@ -1,6 +1,6 @@
-
 import React from 'react';
 import styles from './Header.module.css';
+import logoDesktop from '../../../assets/images/logos/site-logo-3.png';
 
 interface LogoProps {
   variant?: 'desktop' | 'mobile';
@@ -15,8 +15,8 @@ const Logo: React.FC<LogoProps> = ({ variant = 'desktop', className = '' }) => {
 
   return (
     <div className={`${styles.logoContainer} ${styles[variant]} ${className}`}>
-      <img 
-        src="/src/assets/images/logos/site-logo-3.png"
+      <img
+        src={logoDesktop}
         alt="Foco Educativo 360"
         className={styles.logoImage}
         width={logoSize[variant].width}
