@@ -1,0 +1,73 @@
+
+/* TIPOGRAFÍA MOBILE FIRST */
+
+h1, .h1 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+}
+
+h2, .h2 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+h3, .h3 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+p, .body {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.small, small {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+/* Clases utilitarias tipográficas */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-regular { font-weight: var(--font-weight-regular); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Colores de texto */
+.text-primary { color: var(--color-text); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+
+/* ===== MEDIA QUERIES PARA TIPOGRAFÍA ===== */
+
+@media (min-width: 768px) {
+  h1, .h1 { font-size: 2.25rem; } /* 36px */
+  h2, .h2 { font-size: 1.75rem; } /* 28px */
+  h3, .h3 { font-size: 1.375rem; } /* 22px */
+}
+
+@media (min-width: 1024px) {
+  h1, .h1 { font-size: 2.5rem; } /* 40px (+25%) */
+  h2, .h2 { font-size: 2rem; }    /* 32px (+33%) */
+  h3, .h3 { font-size: 1.5rem; }  /* 24px (+20%) */
+  p, .body { line-height: var(--line-height-loose); }
+}
