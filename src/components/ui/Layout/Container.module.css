@@ -1,0 +1,45 @@
+
+/* MOBILE FIRST */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Tamaños - Mobile: todos full width */
+.sm, .md, .lg, .xl, .full {
+  max-width: 100%;
+}
+
+/* Padding */
+.padding-none { padding: 0; }
+.padding-sm { padding: 0 var(--space-md); }
+.padding-md { padding: 0 var(--space-lg); }
+.padding-lg { padding: 0 var(--space-xl); }
+.padding-xl { padding: 0 var(--space-2xl); }
+
+/* Fondos */
+.background-default { background-color: transparent; }
+.background-primary { background-color: var(--color-primary); }
+.background-surface { background-color: var(--color-surface); }
+
+/* TABLET */
+@media (min-width: 768px) {
+  .sm { max-width: 640px; }
+  .md { max-width: 768px; }
+  .lg { max-width: 1024px; }
+  .xl { max-width: 1280px; }
+  .full { max-width: 100%; }
+  
+  .padding-sm { padding: 0 var(--space-lg); }
+  .padding-md { padding: 0 var(--space-xl); }
+  .padding-lg { padding: 0 var(--space-2xl); }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .lg { max-width: 1152px; }
+  .xl { max-width: 1400px; }
+  
+  .padding-xl { padding: 0 var(--space-3xl); }
+}

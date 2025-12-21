@@ -1,11 +1,13 @@
-// src/App.tsx
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './styles/global.css';
 
-import LandingPage from "./pages/LandingPage";
+import LandingPage from './pages/LandingPage';
+import CapsulesPage from './pages/CapsulesPage/CapsulesPage';
+import Background from './components/ui/Background/Background';
+import PageLayout from './components/layout/PageLayout';
+import backgroundImage from './assets/images/background/background-site.png';
 
-// Puedes ir creando estos dos poco a poco.
-// Mientras tanto los dejamos aquí como componentes simples.
+/* Páginas temporales (pueden moverse luego a /pages) */
 const LoginPage: React.FC = () => (
   <div>
     <h1>Página de inicio de sesión</h1>
@@ -20,48 +22,73 @@ const DashboardPage: React.FC = () => (
   </div>
 );
 
-const App: React.FC = () => {
+function App() {
   return (
     <Router>
-      {/* Layout básico con header/footer reutilizables */}
-      <div className="app-layout">
-        <header>
-          <h1>Foco Educativo 360</h1>
-          <nav>
-            {/* Navegación base */}
-            <a href="/">Inicio</a> | <a href="/login">Login</a> |{" "}
-            <a href="/dashboard">Dashboard</a>
-          </nav>
-        </header>
+      <PageLayout>
+        <Routes>
 
-        <main>
-          <Routes>
-            {/* Ruta principal */}
-            <Route path="/" element={<LandingPage />} />
+          {/* Landing */}
+          <Route
+            path="/"
+            element={
+              <Background
+                imagePath={backgroundImage}
+                opacity={1}
+                overlay
+                overlayColor="#000"
+                overlayOpacity={0.4}
+              >
+                <LandingPage />
+              </Background>
+            }
+          />
 
-            {/* Rutas base adicionales */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
+          {/* Cápsulas */}
+          <Route
+            path="/capsulas"
+            element={
+              <Background imagePath={backgroundImage}>
+                <CapsulesPage />
+              </Background>
+            }
+          />
 
-            {/* Ruta para 404 */}
-            <Route
-              path="*"
-              element={
-                <div>
-                  <h1>404</h1>
-                  <p>Página no encontrada.</p>
-                </div>
-              }
-            />
-          </Routes>
-        </main>
+          {/* Login */}
+          <Route
+            path="/login"
+            element={
+              <Background imagePath={backgroundImage}>
+                <LoginPage />
+              </Background>
+            }
+          />
 
-        <footer>
-          <small>© {new Date().getFullYear()} Foco Educativo 360</small>
-        </footer>
-      </div>
+          {/* Dashboard */}
+          <Route
+            path="/dashboard"
+            element={
+              <Background imagePath={backgroundImage}>
+                <DashboardPage />
+              </Background>
+            }
+          />
+
+          {/* 404 */}
+          <Route
+            path="*"
+            element={
+              <div>
+                <h1>404</h1>
+                <p>Página no encontrada.</p>
+              </div>
+            }
+          />
+
+        </Routes>
+      </PageLayout>
     </Router>
   );
-};
+}
 
 export default App;

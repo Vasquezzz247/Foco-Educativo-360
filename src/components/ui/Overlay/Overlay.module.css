@@ -1,0 +1,31 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Variantes de uso */
+.overlay.hero {
+  border-radius: var(--border-radius-xl);
+}
+
+.overlay.card {
+  border-radius: var(--border-radius-lg);
+}
+
+/* Modificadores */
+.overlay.blur {
+    -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Para soporte de navegadores antiguos */
+@supports not (backdrop-filter: blur(8px)) {
+  .overlay.blur {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}

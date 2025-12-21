@@ -1,0 +1,47 @@
+
+/* Estilos para el fondo del sitio */
+
+.site-background {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.site-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/src/assets/images/background/background-site.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: -1;
+  opacity: 0.1; /* Ajustar opacidad */
+}
+
+/* Para mejorar legibilidad sobre el fondo */
+.site-background::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(184, 234, 255, 0.9) 0%,     /* #B8EAFF con opacidad */
+    rgba(247, 250, 252, 0.95) 100%  /* #F7FAFC con opacidad */
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Alternativa sin gradiente, si se prefiere solo la imagen */
+.site-background-image-only::before {
+  opacity: 0.15; /* Poco más visible pero sutil */
+  background-attachment: scroll; /* Mejor performance en móviles */
+}
