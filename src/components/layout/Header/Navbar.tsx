@@ -11,6 +11,8 @@ interface NavItem {
 <nav>
   <Link to="/">Inicio</Link>
   <Link to="/capsulas">Cápsulas</Link>
+  <Link to="/recursos">Recursos</Link>
+  
   {/* otros enlaces */}
 </nav>
 

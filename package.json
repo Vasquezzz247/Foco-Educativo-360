@@ -9,7 +9,10 @@
     "dev:host": "vite --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:usability": "node scripts/test-usability.js",
+    "test:checklist": "open docs/TESTING_CHECKLIST.md",
+    "qa": "npm run test:usability && npm run test:checklist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
