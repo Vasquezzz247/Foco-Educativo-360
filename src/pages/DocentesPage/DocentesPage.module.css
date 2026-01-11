@@ -1,0 +1,86 @@
+.externalResourceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.recommendedBadge {
+  background-color: var(--accent-color);
+  color: var(--text-secondary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.externalResourceDescription {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.externalResourceInfo {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.resourceType,
+.resourceLanguage {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.resourceType::before {
+  content: "📄 ";
+}
+
+.resourceLanguage::before {
+  content: "🌐 ";
+}
+
+.externalLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--secondary-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.externalLink:hover {
+  background-color: var(--primary-dark);
+  gap: 0.75rem;
+}
+
+.externalLink svg {
+  transition: transform 0.3s ease;
+}
+
+.externalLink:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .resourcesGrid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .externalResourceInfo {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .externalResourceHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

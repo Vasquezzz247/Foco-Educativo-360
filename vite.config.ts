@@ -7,6 +7,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  assetsInclude: ['**/*.pdf', '**/*.pptx', '**/*.docx'],
   server: {
     host: '0.0.0.0',
     port: 5173,

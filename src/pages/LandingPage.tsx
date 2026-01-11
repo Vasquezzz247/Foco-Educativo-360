@@ -85,7 +85,7 @@ const LandingPage: React.FC = () => {
                 Potencia tu enseñanza con herramientas basadas en neurociencia
               </h2>
               <ul className={styles.benefitsList}>
-                <li>🔄 Creación de cápsulas educativas interactivas</li>
+                <li>🔄 Creación de cápsulas interactivas</li>
                 <li>📊 Dashboard de seguimiento de estudiantes</li>
                 <li>🎯 Recursos basados en evidencia científica</li>
                 <li>👥 Comunidad de docentes innovadores</li>

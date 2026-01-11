@@ -233,7 +233,7 @@
 
 .teacherContent,
 .studentContent {
-  color: white;
+  color: var(--color-text)
 }
 
 .roleBadge {
@@ -278,7 +278,7 @@
 }
 
 .imagePlaceholder {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(233, 4, 4, 0.1);
   border-radius: var(--border-radius-lg);
   padding: 4rem 2rem;
   display: flex;
@@ -288,7 +288,7 @@
 }
 
 .placeholderText {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-text-secondary);
   font-family: 'Inter', sans-serif;
   font-size: 1.25rem;
 }

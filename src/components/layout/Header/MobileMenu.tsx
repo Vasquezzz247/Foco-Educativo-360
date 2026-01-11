@@ -65,14 +65,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         <Navbar variant="mobile" onItemClick={handleLinkClick} />
         
         {/* Acciones adicionales*/}
-        <div className={styles.mobileActions}>
-          <button className={`${styles.button} ${styles.primaryButton}`}>
-            Ingresar
-          </button>
-          <button className={`${styles.button} ${styles.secondaryButton}`}>
-            Registrarse
-          </button>
-        </div>
+        
       </div>
     </>
   );
