@@ -56,16 +56,7 @@ const Header: React.FC = () => {
           )}
 
           {/* Acciones desktop */}
-          {!isMobile && !isTablet && (
-            <div className={styles.headerActions}>
-              <button className={`${styles.button} ${styles.loginButton}`}>
-                Ingresar
-              </button>
-              <button className={`${styles.button} ${styles.signupButton}`}>
-                Registrarse
-              </button>
-            </div>
-          )}
+          
 
         {/* Mobile: Hamburger button */}
         {(isMobile || isTablet) && (

@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage';
 import CapsulesPage from './pages/CapsulesPage/CapsulesPage';
 import ResourcesPage from './pages/ResourcesPage/ResourcesPage';
 import ResourceDetailPage from './pages/ResourcesPage/resources/conociendo-el-cerebro/ResourceDetailPage';
+import DocentesPage from './pages/DocentesPage/DocentesPage';
 import Background from './components/ui/Background/Background';
 import PageLayout from './components/layout/PageLayout';
 import backgroundImage from './assets/images/background/background-site.png';
@@ -67,6 +68,8 @@ function App() {
                 <ResourceDetailPage />
               </Background>
             } />
+
+            <Route path="/docentes" element={<DocentesPage />} />
 
             {enableTestPages && (
               <Route path="/test-page" element={
