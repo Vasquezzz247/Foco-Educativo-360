@@ -1,0 +1,152 @@
+/* CSS provicional para la página de registro */
+
+.registerContainer {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.registerForm {
+  display: flex;
+  flex-direction: column;
+}
+.formGroup {
+  margin-bottom: 15px;
+}
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+.submitButton {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.submitButton:hover {
+  background-color: #0056b3;
+}
+.loginLink {
+  text-align: center;
+  margin-top: 15px;
+}
+.loginLink a {
+  color: #007bff;
+  text-decoration: none;
+}
+.loginLink a:hover {
+  text-decoration: underline;
+}
+.errorMessage {
+  color: #c53030;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.successMessage {
+  color: #38a169;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+@media (max-width: 480px) {
+  .registerContainer {
+    margin: 20px;
+    padding: 15px;
+  }
+}
+@media (max-width: 320px) {
+  .title {
+    font-size: 1.5rem;
+  }
+    .submitButton {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+.welcomeMessage {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+.introText {
+  font-size: 16px;
+  color: #555;
+    margin-bottom: 20px;
+}
+.quickActions {
+  margin-top: 30px;
+}
+.actionCard {
+  text-align: center;
+  padding: 15px;
+}
+.actionLink {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+.actionLink:hover {
+  text-decoration: underline;
+}
+.statsSection {
+  margin-top: 40px;
+}
+.statCard {
+  padding: 20px;
+  text-align: center;
+}
+.statNumber {
+  font-size: 32px;
+  font-weight: bold;
+}
+.statLabel {
+  font-size: 16px;
+  color: #666;
+}
+.recentActivity {
+  margin-top: 40px;
+}
+.activityItem {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.activityDate {
+  font-size: 12px;
+  color: #999;
+}
+.activityDescription {
+  font-size: 14px;
+}
+.activityDescription a {
+  color: #007bff;
+  text-decoration: none;
+}
+.activityDescription a:hover {
+  text-decoration: underline;
+}
+.noActivity {
+  text-align: center;
+  color: #999;
+  padding: 20px 0;
+}
