@@ -1,0 +1,95 @@
+/* CSS para la página del panel de control (provicional) */
+
+.dashboardContainer {
+  padding: 20px;
+}   
+.welcomeMessage {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.quickActions {
+  margin-top: 30px;
+}
+.actionCard {
+  text-align: center;
+  padding: 15px;
+}
+.actionLink {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+.actionLink:hover {
+  text-decoration: underline;
+}
+.statsSection {
+  margin-top: 40px;
+}
+.statCard {
+  padding: 20px;
+  text-align: center;
+}
+.statNumber {
+  font-size: 32px;
+  font-weight: bold;
+}
+.statLabel {
+  font-size: 16px;
+  color: #666;
+}
+.recentActivity {
+  margin-top: 40px;
+}
+.activityItem {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.activityDate {
+  font-size: 12px;
+  color: #999;
+}
+.activityDescription {
+  font-size: 14px;
+}
+.activityDescription a {
+  color: #007bff;
+  text-decoration: none;
+}
+.activityDescription a:hover {
+  text-decoration: underline;
+}
+.noActivity {
+  text-align: center;
+  color: #999;
+  padding: 20px 0;
+}
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding: 10px;
+  }
+  .welcomeMessage {
+    font-size: 20px;
+  }
+}
+    .statNumber {
+        font-size: 28px;
+    }
+    
+    .statLabel {
+        font-size: 14px;
+    }
+    
+    .actionCard h4 {
+        font-size: 16px;
+    }
+    .actionCard p {
+        font-size: 13px;
+    }
+    .activityDescription {
+        font-size: 13px;
+    }
+    .activityDate {
+        font-size: 11px;
+    }
+    

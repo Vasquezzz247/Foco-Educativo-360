@@ -1,44 +1,47 @@
 {
-  "name": "foco-educativo-360",
-  "displayName": "Foco Educativo 360",
+  "name": "foco-educativo-360-fullstack",
+  "version": "1.0.0",
+  "description": "Plataforma educativa con neurociencia - Frontend React + Backend Express API",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  
   "scripts": {
-    "dev": "vite",
-    "dev:host": "vite --host",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "test:usability": "node scripts/test-usability.js",
-    "test:checklist": "open docs/TESTING_CHECKLIST.md",
-    "qa": "npm run test:usability && npm run test:checklist"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
-    "lucide-react": "^0.554.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.10.1"
+    "install:all": "npm install && npm run install:frontend && npm run install:backend",
+    "install:frontend": "npm install --prefix frontend",
+    "install:backend": "npm install --prefix backend",
+    "dev": "concurrently --names \"FRONTEND,BACKEND\" -c \"blue,green\" \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "npm run build --prefix frontend",
+    "build:backend": "npm run build --prefix backend",
+    "start": "npm run start:backend",
+    "start:backend": "npm start --prefix backend",
+    "preview": "npm run preview --prefix frontend",
+    "test": "npm run test:frontend && npm run test:backend",
+    "test:frontend": "npm run test --prefix frontend",
+    "test:backend": "npm run test --prefix backend",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "npm run lint --prefix frontend",
+    "lint:backend": "npm run lint --prefix backend",
+    "clean": "npm run clean:frontend && npm run clean:backend",
+    "clean:frontend": "rm -rf frontend/node_modules frontend/dist frontend/.parcel-cache",
+    "clean:backend": "rm -rf backend/node_modules backend/dist"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@types/node": "^24.10.0",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "@types/react-router-dom": "^5.3.3",
-    "@vitejs/plugin-react": "^5.1.0",
-    "@vitejs/plugin-react-swc": "^4.2.2",
-    "autoprefixer": "^10.4.22",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.17",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.3",
-    "vite": "^7.2.2"
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "educacion",
+    "neurociencia",
+    "react",
+    "express",
+    "postgresql",
+    "jwt"
+  ],
+  "author": "Grupo Foco Educativo 360",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
