@@ -440,3 +440,403 @@
 .navbar.mobile .homeLink:hover {
   background-color: var(--primary-light);
 }
+
+/* ===== MENÚ DE USUARIO DESKTOP ===== */
+.userMenu {
+  position: relative;
+  margin-left: 20px;
+}
+
+.userMenuButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 40px;
+  padding: 4px 4px 4px 4px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.userMenuButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(4);
+  backdrop-filter: blur(4px);
+}
+
+.userName {
+  font-weight: 500;
+  font-size: 16px;
+  white-space: nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+}
+
+.userArrow {
+  margin-right: 12px;
+  font-size: 12px;
+  opacity: 0.9;
+  color: white;
+}
+
+/* Dropdown del menú de usuario */
+.userDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 12px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1100;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.userMenu:hover .userDropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  color: #2D3748;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+
+.dropdownItem:hover {
+  background: #f7fafc;
+  color: #667eea;
+}
+
+.dropdownItem:last-child:hover {
+  background: #fed7d7;
+  color: #e53e3e;
+}
+
+.dropdownItem span {
+  font-size: 18px;
+}
+
+/* Versión scrolled del header */
+.header.scrolled .userMenuButton {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46a1 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== MENÚ DE USUARIO MÓVIL ===== */
+.mobileUserMenu {
+  padding: 20px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.mobileUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.mobileUserAvatar {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.mobileUserDetails {
+  flex: 1;
+}
+
+.mobileUserName {
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #2D3748;
+  margin-bottom: 4px;
+}
+
+.mobileUserEmail {
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 6px;
+}
+
+.mobileUserRole {
+  display: inline-block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  background: #e2e8f0;
+  color: #4a5568;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+/* Roles específicos */
+.mobileUserRole[data-role="admin"] {
+  background: #fbb6ce;
+  color: #97266d;
+}
+
+.mobileUserRole[data-role="teacher"] {
+  background: #b2f5ea;
+  color: #234e52;
+}
+
+.mobileUserRole[data-role="student"] {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.mobileUserActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.mobileProfileButton,
+.mobileLogoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobileProfileButton {
+  background: #4299e1;
+  color: white;
+}
+
+.mobileProfileButton:hover {
+  background: #3182ce;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+.mobileLogoutButton {
+  background: #fed7d7;
+  color: #e53e3e;
+}
+
+.mobileLogoutButton:hover {
+  background: #e53e3e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+.mobileProfileButton span,
+.mobileLogoutButton span {
+  font-size: 18px;
+}
+
+/* ===== BOTÓN DE CERRAR SESIÓN (simple) ===== */
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 2px solid #e53e3e;
+  color: #e53e3e;
+  padding: 8px 16px;
+  border-radius: 40px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 16px;
+}
+
+.logoutButton:hover {
+  background: #e53e3e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+/* ===== AJUSTES RESPONSIVE ===== */
+@media (min-width: 1024px) {
+  .mobileUserMenu {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .userMenu {
+    display: none; /* Ocultar menú desktop en móvil */
+  }
+  
+  .headerActions .logoutButton {
+    display: none; /* Ocultar botón de logout simple en móvil */
+  }
+}
+
+/* ===== ACTIONS DEL HEADER CON USUARIO ===== */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Cuando hay usuario autenticado */
+.headerActions.hasUser {
+  gap: 8px;
+}
+
+/* ===== VARIACIONES DE COLOR PARA EL HEADER SCROLLED ===== */
+.header.scrolled .userMenuButton {
+  background: linear-gradient(135deg, #553c9a 0%, #4a3080 100%);
+}
+
+.header.scrolled .mobileUserMenu {
+  background: rgba(248, 250, 252, 0.95);
+  -webkit-backdrop-filter: blur(10);
+  backdrop-filter: blur(10px);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.userDropdown {
+  animation: slideDown 0.2s ease;
+}
+
+/* ===== INDICADOR DE EMAIL NO VERIFICADO ===== */
+.unverifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #fed7d7;
+  color: #e53e3e;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+.unverifiedBadge span {
+  font-size: 12px;
+}
+
+/* ===== ESTILOS PARA EL LINK DE INICIO (ya existente, solo asegurar) ===== */
+.homeItem {
+  border-right: 1px solid var(--border-color);
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.homeIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.homeLink:hover {
+  color: var(--primary-dark);
+}
+
+/* Versión mobile - actualizar para mantener consistencia */
+.navbar.mobile .homeItem {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.navbar.mobile .homeLink {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background-color: #f7fafc;
+  font-size: 18px;
+}
+
+.navbar.mobile .homeLink:hover {
+  background-color: #ebf8ff;
+  color: #4299e1;
+}

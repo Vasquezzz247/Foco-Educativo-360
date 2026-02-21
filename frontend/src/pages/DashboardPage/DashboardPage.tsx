@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import PageLayout from '../../components/layout/PageLayout';
 import { Container, Grid } from '../../components/ui/Layout';
@@ -7,12 +9,13 @@ import styles from './DashboardPage.module.css';
 
 const DashboardPage: React.FC = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <PageLayout showBreadcrumb={true}>
       <Container size="lg" className={styles.container}>
         <div className={styles.header}>
-          <h1>Dashboard</h1>
+          <h1>Mi Espacio</h1>
           <p>Bienvenido, {user?.name}</p>
         </div>
         
@@ -60,16 +63,16 @@ const DashboardPage: React.FC = () => {
             <Card variant="outline" hover className={styles.actionCard}>
               <h4>👤 Mi Perfil</h4>
               <p>Actualiza tu información personal</p>
-              <a href="/perfil" className={styles.actionLink}>Editar →</a>
+              <button
+                onClick={() => navigate('/perfil')}
+                className={styles.actionLink}
+              >
+                Ir a perfil →
+              </button>
             </Card>
           </Grid>
         </div>
         
-        <div className={styles.logoutSection}>
-          <button onClick={logout} className={styles.logoutButton}>
-            Cerrar Sesión
-          </button>
-        </div>
       </Container>
     </PageLayout>
   );

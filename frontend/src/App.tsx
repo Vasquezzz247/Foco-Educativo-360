@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ContentProvider } from './context/ContentContext';
 import { useEnvironment } from './hooks/useEnvironment';
@@ -65,6 +65,8 @@ function App() {
                 <DashboardPage />
               </PrivateRoute>
             } />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
             
             {/* Perfil de usuario */}
             <Route path="/perfil" element={

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { authService } from '../services/authService';
 import type { User, LoginResponse, RegisterResponse } from '../services/authService';
 
-interface AuthContextType {
+interface  AuthContextType {
   user: User | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<LoginResponse>;
@@ -42,37 +42,50 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Inicializar autenticación
   useEffect(() => {
-    const initAuth = async () => {
-      try {
-        // Configurar interceptor de axios en authService
-        authService.setupAxiosInterceptor();
+  const initAuth = async () => {
+    try {
+      console.log('🔄 INIT AUTH - Ejecutando...');
+      
+      // Configurar interceptor de axios
+      authService.setupAxiosInterceptor();
+      
+      // Obtener datos almacenados
+      const storedToken = authService.getCurrentToken();
+      const storedRefreshToken = authService.getRefreshToken();
+      const storedUser = authService.getCurrentUser();
+
+      console.log('📦 Datos almacenados:', { 
+        storedToken: storedToken ? '✓' : '✗', 
+        storedRefreshToken: storedRefreshToken ? '✓' : '✗', 
+        storedUser: storedUser ? '✓' : '✗' 
+      });
+
+      if (storedToken && storedUser) {
+        console.log('✅ Restaurando sesión desde localStorage');
+        setToken(storedToken);
+        setRefreshToken(storedRefreshToken);
+        setUser(storedUser);
         
-        // Obtener datos almacenados
-        const storedToken = authService.getCurrentToken();
-        const storedRefreshToken = authService.getRefreshToken();
-        const storedUser = authService.getCurrentUser();
-
-        if (storedToken && storedUser) {
-          setToken(storedToken);
-          setRefreshToken(storedRefreshToken);
-          setUser(storedUser);
-          
-          // Validar token con el servidor
-          const isValid = await validateSession();
-          if (!isValid) {
-            clearAuthData();
-          }
-        }
-      } catch (error) {
-        console.error('Error inicializando autenticación:', error);
-        clearAuthData();
-      } finally {
-        setLoading(false);
+        // Validar token con el servidor (OPCIONAL - puede estar causando problema)
+        // const isValid = await validateSession();
+        // if (!isValid) {
+        //   console.log('❌ Token inválido, limpiando datos');
+        //   clearAuthData();
+        // }
+      } else {
+        console.log('ℹ️ No hay sesión previa');
       }
-    };
+    } catch (error) {
+      console.error('Error inicializando autenticación:', error);
+      clearAuthData();
+    } finally {
+      console.log('✅ INIT AUTH - Completado, loading=false');
+      setLoading(false);
+    }
+  };
 
-    initAuth();
-  }, []);
+  initAuth();
+}, []); // ← Vacío, solo se ejecuta al montar
 
   // Sincronizar estado con localStorage
   useEffect(() => {
@@ -90,6 +103,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
+  useEffect(() => {
+  console.log('🔄 AuthProvider montado');
+  console.log('Estado inicial - user:', user);
+  console.log('Estado inicial - token:', token);
+  console.log('Estado inicial - refreshToken:', refreshToken);
+  console.log('Estado inicial - loading:', loading);
+}, []);
+
+// Cada vez que cambie el estado
+useEffect(() => {
+  console.log('📌 Estado actualizado:');
+  console.log('   - user:', user);
+  console.log('   - token:', token);
+  console.log('   - refreshToken:', refreshToken);
+  console.log('   - loading:', loading);
+  console.log('   - isAuthenticated:', !!token);
+}, [user, token, refreshToken, loading]);
+
   // Limpiar datos de autenticación
   const clearAuthData = () => {
     setUser(null);
@@ -100,41 +131,40 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Validar sesión con el servidor
   const validateSession = useCallback(async (): Promise<boolean> => {
-    if (!token) return false;
+  if (!token) return false;
 
+  try {
+    console.log('🔍 Validando sesión con token:', token?.substring(0, 20) + '...');
+    
+    // Verificar que el token no esté expirado localmente
     try {
-      const { valid, user: validatedUser } = await authService.validateToken();
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const exp = payload.exp * 1000; // convertir a milisegundos
       
-      if (valid && validatedUser) {
-        setUser(validatedUser);
-        return true;
+      if (Date.now() > exp) {
+        console.log('⚠️ Token expirado localmente');
+        return false;
       }
-    } catch (error) {
-      console.error('Error validando sesión:', error);
+    } catch (e) {
+      console.log('⚠️ No se pudo decodificar token');
     }
-
-    // Si la validación falla, intentar refresh token
-    if (refreshToken) {
-      try {
-      const { token: newToken, user: refreshedUser } = await authService.refreshToken();
-      
-      if (newToken) {
-        setToken(newToken);
-        
-        if (refreshedUser) {
-          setUser(refreshedUser);
-        }
-        
-        return true;
-      }
-    } catch (error) {
-      console.error('Error refrescando token:', error);
+    
+    // Intentar validar con el servidor
+    const { valid, user: validatedUser } = await authService.validateToken();
+    
+    if (valid && validatedUser) {
+      console.log('✅ Token válido en servidor');
+      setUser(validatedUser);
+      return true;
     }
+    
+    console.log('❌ Token inválido en servidor');
+    return false;
+  } catch (error) {
+    console.error('Error validando sesión:', error);
+    return false; // No limpiar datos automáticamente
   }
-
-  clearAuthData();
-  return false;
-}, [token, refreshToken]);
+}, [token]);
 
   // Refrescar token de acceso
   const refreshAuthToken = useCallback(async (): Promise<string | null> => {
@@ -163,21 +193,38 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return null;
   }, [refreshToken]);
 
-  // Login
+  // Login - Iteración 3
   const login = async (email: string, password: string): Promise<LoginResponse> => {
-    try {
-      const data = await authService.login(email, password);
-      
-      setUser(data.user);
-      setToken(data.token);
-      setRefreshToken(data.refreshToken || null);
-      
-      return data;
-    } catch (error) {
-      clearAuthData();
-      throw error;
-    }
-  };
+  try {
+    console.log('AuthContext: Iniciando login...');
+    const data = await authService.login(email, password);
+    console.log('AuthContext: Login exitoso:', data);
+    
+    // VERIFICAR que estos valores se estén guardando
+    console.log('Token a guardar:', data.token);
+    console.log('Usuario a guardar:', data.user);
+    
+    setUser(data.user);
+    setToken(data.token);
+    setRefreshToken(data.refreshToken || null);
+
+    // Forzar una actualización del estado
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    console.log('✅ Estado actualizado - isAuthenticated:', !!data.token);
+    
+    
+    // Verificar que se guardaron en localStorage
+    console.log('Token en localStorage después de set:', localStorage.getItem('token'));
+    console.log('User en localStorage después de set:', localStorage.getItem('user'));
+    
+    return data;
+  } catch (error) {
+    console.error('AuthContext: Error en login:', error);
+    clearAuthData();
+    throw error;
+  }
+};
 
   // Logout
   const logout = async (): Promise<void> => {

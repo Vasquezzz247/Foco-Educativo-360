@@ -113,7 +113,16 @@ function updateUser(id, updates) {
 async function register(req, res) {
   const { name, email, password, phone, bio, role } = req.body;
 
+  // 👇 LOGS DE DEPURACIÓN
+  console.log('📝 INTENTO DE REGISTRO:');
+  console.log('   - Datos recibidos:', { name, email, phone, bio, role });
+  console.log('   - Contraseña presente:', !!password);
+  console.log('   - Headers:', req.headers);
+  console.log('   - IP:', req.ip || req.connection.remoteAddress);
+  // 👆 FIN LOGS
+
   if (!name || !email || !password) {
+    console.log('❌ Campos requeridos faltantes');
     return res.status(400).json({ error: "Nombre, email y contraseña son requeridos" });
   }
 
@@ -121,6 +130,7 @@ async function register(req, res) {
     // Verificar si el email ya existe
     const existingUser = findUserByEmail(email);
     if (existingUser) {
+      console.log('❌ Email ya existe:', email);
       return res.status(409).json({ error: "El email ya está registrado" });
     }
 
@@ -138,7 +148,7 @@ async function register(req, res) {
       bio: bio || null,
       role: userRole,
       avatar_url: null,
-      email_verified: false, // Verificación necesaria
+      email_verified: false,
       refresh_token: null,
       reset_password_token: null,
       reset_password_expires: null,
@@ -148,6 +158,8 @@ async function register(req, res) {
 
     // Guardar en array de usuarios registrados
     registeredUsers.push(newUser);
+    console.log('✅ Usuario registrado:', { id: newUser.id, email: newUser.email });
+    console.log('📊 Total usuarios registrados:', registeredUsers.length);
 
     // Crear tokens
     const token = signToken(newUser);
@@ -166,7 +178,7 @@ async function register(req, res) {
       message: "Usuario registrado exitosamente. Por favor verifica tu email." 
     });
   } catch (error) {
-    console.error("Error en registro:", error);
+    console.error("❌ Error en registro:", error);
     return res.status(500).json({ 
       error: "Error del servidor", 
       details: process.env.NODE_ENV === 'development' ? error.message : undefined 

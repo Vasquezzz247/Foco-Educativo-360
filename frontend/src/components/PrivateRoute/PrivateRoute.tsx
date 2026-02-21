@@ -6,8 +6,11 @@ interface PrivateRouteProps {
   children: React.ReactNode;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
+  
+  console.log('🔐 PrivateRoute - loading:', loading);
+  console.log('🔐 PrivateRoute - isAuthenticated:', isAuthenticated);
 
   if (loading) {
     return (
@@ -21,8 +24,14 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
       </div>
     );
   }
-
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
+  // Solo redirigir cuando estamos seguros de que no hay autenticación
+  if (!isAuthenticated) {
+    console.log('🔐 No autenticado, redirigiendo...');
+    return <Navigate to="/login" replace />;
+  }
+  
+  console.log('🔐 Autenticado, mostrando contenido');
+  return <>{children}</>;
 };
 
 export default PrivateRoute;

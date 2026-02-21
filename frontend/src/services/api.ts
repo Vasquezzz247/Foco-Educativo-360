@@ -1,16 +1,21 @@
 import axios from 'axios';
 
 // Configuración base
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_BASE_URL = import.meta.env.PROD 
+  ? 'https://foco-educativo-360.vercel.app' 
+  : import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-// Instancia axios
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 15000, // 15 segundos máximo de espera
+  withCredentials: true,
+  timeout: 15000,
 });
+
+console.log('🌐 API conectando a:', API_BASE_URL);
+
 
 // Variable para controlar intentos de refresh token
 let isRefreshing = false;
@@ -35,6 +40,8 @@ api.interceptors.request.use(
   (config) => {
     // Obtener token del localStorage
     const token = localStorage.getItem('token');
+     console.log('📤 Request:', config.method?.toUpperCase(), config.url);
+     console.log('   Full URL:', (config.baseURL || '') + config.url);
     
     // Si existe token, agregarlo como header Authorization
     if (token) {
