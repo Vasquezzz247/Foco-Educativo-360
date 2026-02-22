@@ -9,38 +9,40 @@ const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [phone, setPhone] = useState(''); // opcional
+  const [bio, setBio] = useState('');
+  const [role, setRole] = useState(''); // opcional
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    
-    // Validaciones
-    if (password !== confirmPassword) {
-      setError('Las contraseñas no coinciden');
-      return;
-    }
-    
-    if (password.length < 6) {
-      setError('La contraseña debe tener al menos 6 caracteres');
-      return;
-    }
-    
-    setLoading(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  // Validaciones
+  if (password !== confirmPassword) {
+    setError('Las contraseñas no coinciden');
+    return;
+  }
+  
+  if (password.length < 6) {
+    setError('La contraseña debe tener al menos 6 caracteres');
+    return;
+  }
+  
+  setLoading(true);
 
-    try {
-      await register(name, email, password);
-      navigate('/dashboard');
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Error al registrar usuario');
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    await register(name, email, password);
+    navigate('/dashboard');
+  } catch (err: any) {
+    setError(err.response?.data?.message || 'Error al registrar usuario');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <PageLayout showBreadcrumb={false}>

@@ -58,61 +58,67 @@ export interface LoginResponse extends AuthResponse {}
 export interface RegisterResponse extends AuthResponse {}
 
 export const authService = {
-  // Login
-  login: async (email: string, password: string): Promise<LoginResponse> => {
-    try {
-      const response = await api.post('/auth/login', { email, password });
-      const data = response.data;
+  login: async (email: string, password: string) => {
+  try {
+    const response = await api.post('/auth/login', { email, password });
+    const data = response.data;
+    
+    console.log('📝 Datos recibidos del servidor:', data);
+    
+    if (data.token) {
+      // Guardar SINCRÓNICAMENTE
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        
-        if (data.refreshToken) {
-          localStorage.setItem('refreshToken', data.refreshToken);
-        }
+      if (data.refreshToken) {
+        localStorage.setItem('refreshToken', data.refreshToken);
       }
       
-      return data;
-    } catch (error: any) {
-      throw new Error(error.response?.data?.error || 'Error en el login');
+      // Verificar que se guardaron
+      console.log('💾 Token guardado en localStorage:', localStorage.getItem('token')?.substring(0, 20) + '...');
     }
-  },
+    
+    return data;
+  } catch (error) {
+    console.error('Error en login:', error);
+    throw error;
+  }
+},
 
   // Register
   register: async (
-    name: string, 
-    email: string, 
-    password: string,
-    phone?: string,
-    bio?: string,
-    role?: string
-  ): Promise<RegisterResponse> => {
-    try {
-      const response = await api.post('/auth/register', { 
-        name, 
-        email, 
-        password,
-        phone,
-        bio,
-        role 
-      });
-      const data = response.data;
+  name: string, 
+  email: string, 
+  password: string,
+  phone?: string,
+  bio?: string,
+  role?: string
+): Promise<RegisterResponse> => {
+  try {
+    const response = await api.post('/auth/register', { 
+      name, 
+      email, 
+      password,
+      phone,
+      bio,
+      role 
+    });
+    const data = response.data;
+    
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        
-        if (data.refreshToken) {
-          localStorage.setItem('refreshToken', data.refreshToken);
-        }
+      if (data.refreshToken) {
+        localStorage.setItem('refreshToken', data.refreshToken);
       }
-      
-      return data;
-    } catch (error: any) {
-      throw new Error(error.response?.data?.error || 'Error en el registro');
     }
-  },
+    
+    return data;
+  } catch (error: any) {
+    throw new Error(error.response?.data?.error || 'Error en el registro');
+  }
+},
 
   // Logout
   logout: async (): Promise<void> => {

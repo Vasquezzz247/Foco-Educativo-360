@@ -9,7 +9,9 @@ export default defineConfig({
   ],
     assetsInclude: ['**/*.pptx', '**/*.pdf', '**/*.mp4', '**/*.jpg', '**/*.jpeg', '**/*.png'],
   server: {
-    host: '0.0.0.0',
+    host: true,
     port: 5173,
+    strictPort: true,
   }
 });
+

@@ -9,25 +9,47 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [debug, setDebug] = useState<string>(''); // Para debugging
   
-  const { login } = useAuth();
+  const { login, isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    
-    try {
-      await login(email, password);
-      navigate('/dashboard'); // Redireccionar después del login
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Error al iniciar sesión');
-    } finally {
-      setLoading(false);
+  // Si ya está autenticado, redirigir
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      console.log('Usuario ya autenticado, redirigiendo...');
+      navigate('/dashboard', { replace: true });
     }
-  };
+  }, [isAuthenticated, navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError('');
+  setLoading(true);
+
+  try {
+    console.log('Intentando login con:', email);
+    const result = await login(email, password);
+    console.log('Login exitoso:', result);
+    
+    // Verificar estado después del login
+    console.log('Estado de autenticación:', isAuthenticated);
+    console.log('Usuario actual:', user);
+    
+    // Pequeño delay para asegurar que el estado se actualice
+    setTimeout(() => {
+      console.log('Redirigiendo a dashboard...');
+      navigate('/dashboard', { replace: true });
+    }, 100);
+    
+  } catch (err: any) {
+    console.error('Error en login:', err);
+    setError(err.response?.data?.error || 'Error al iniciar sesión');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <PageLayout showBreadcrumb={false}>
@@ -42,6 +64,12 @@ const LoginPage: React.FC = () => {
             </div>
           )}
           
+          {debug && (
+            <div className={styles.debugInfo}>
+              {debug}
+            </div>
+          )}
+          
           <form onSubmit={handleSubmit} className={styles.loginForm}>
             <div className={styles.formGroup}>
               <label htmlFor="email">Correo Electrónico</label>
@@ -53,6 +81,7 @@ const LoginPage: React.FC = () => {
                 required
                 placeholder="ejemplo@escuela.edu"
                 className={styles.input}
+                disabled={loading}
               />
             </div>
             
@@ -66,6 +95,7 @@ const LoginPage: React.FC = () => {
                 required
                 placeholder="••••••••"
                 className={styles.input}
+                disabled={loading}
               />
             </div>
             
@@ -78,21 +108,18 @@ const LoginPage: React.FC = () => {
             </button>
           </form>
           
-          <div className={styles.links}>
-            <Link to="/register" className={styles.link}>
-              ¿No tienes cuenta? Regístrate
+          <div className={styles.registerPrompt}>
+            <p>¿No tienes una cuenta?</p>
+            <Link to="/register" className={styles.registerButton}>
+              Crear cuenta ahora
             </Link>
-            <span className={styles.separator}>•</span>
-            <Link to="/forgot-password" className={styles.link}>
+            <span className={styles.separator}> - </span>
+            <Link to="/forgot-password" className={styles.forgotPasswordLink}>
               ¿Olvidaste tu contraseña?
             </Link>
           </div>
           
-          <div className={styles.demoCredentials}>
-            <p className={styles.demoTitle}>Credenciales de demostración:</p>
-            <p>Email: docente@ejemplo.com</p>
-            <p>Contraseña: password123</p>
-          </div>
+          
         </div>
       </div>
     </PageLayout>
