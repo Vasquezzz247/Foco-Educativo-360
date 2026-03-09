@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 // Configuración base
-const API_BASE_URL = import.meta.env.PROD 
-  ? 'https://foco-educativo-360.vercel.app' 
-  : import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'https://foco360.alwaysdata.net';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
