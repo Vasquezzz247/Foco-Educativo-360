@@ -1,0 +1,348 @@
+/* RegisterPage.module.css - Agrega estos estilos */
+
+.registerWrapper {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.registerContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 1%;
+}
+
+.registerCard {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.registerHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.registerTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.registerSubtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Role Selector */
+.roleSelector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.roleOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-lg);
+  background: rgba(184, 234, 255, 0.1);
+  border: 2px solid rgba(184, 234, 255, 0.3);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  width: 100%;
+}
+
+.roleOption:hover {
+  transform: translateY(-2px);
+  background: rgba(184, 234, 255, 0.2);
+}
+
+.roleOption.active {
+  border-color: var(--color-primary);
+  background: rgba(184, 234, 255, 0.2);
+  box-shadow: var(--shadow-md);
+}
+
+.roleIcon {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.roleName {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.roleDesc {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+
+/* Form Steps */
+.formStep {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid rgba(184, 234, 255, 0.3);
+}
+
+.formStep:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Role Specific Fields */
+.roleSpecificFields {
+  background: rgba(184, 234, 255, 0.05);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Form Layout */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.formGroup label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  padding: var(--spacing-md);
+  border: 2px solid rgba(184, 234, 255, 0.3);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+  background: white;
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(184, 234, 255, 0.3);
+}
+
+.formGroup input.error,
+.formGroup select.error {
+  border-color: #F56565;
+}
+
+/* Checkbox Grid */
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: auto;
+  margin-right: var(--spacing-xs);
+}
+
+/* Multiple Select */
+select[multiple] {
+  padding: var(--spacing-sm);
+  min-height: 120px;
+}
+
+select[multiple] option {
+  padding: var(--spacing-sm);
+}
+
+/* Info Box */
+.infoBox {
+  background: #EBF8FF;
+  border-left: 4px solid #4299E1;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-top: var(--spacing-lg);
+}
+
+.infoBox p {
+  color: #2C5282;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Password Strength */
+.passwordStrength {
+  margin-top: var(--spacing-xs);
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+}
+
+.passwordStrength.weak {
+  background: #FED7D7;
+  color: #C53030;
+}
+
+.passwordStrength.medium {
+  background: #FEEBC8;
+  color: #C05621;
+}
+
+.passwordStrength.strong {
+  background: #C6F6D5;
+  color: #22543D;
+}
+
+/* Alerts */
+.alertError,
+.alertSuccess {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.alertError {
+  background: #FED7D7;
+  color: #C53030;
+  border: 1px solid #FC8181;
+}
+
+.alertSuccess {
+  background: #C6F6D5;
+  color: #22543D;
+  border: 1px solid #9AE6B4;
+}
+
+.alertIcon {
+  font-size: 1.2rem;
+}
+
+/* Error Messages */
+.errorMessage {
+  color: #F56565;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+/* Terms Section */
+.termsSection {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(184, 234, 255, 0.3);
+}
+
+.termsSection .checkboxLabel {
+  justify-content: center;
+}
+
+.termsSection a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.termsSection a:hover {
+  text-decoration: underline;
+}
+
+/* Form Actions */
+.formActions {
+  margin-top: var(--spacing-xl);
+}
+
+.loginLink {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  color: var(--text-secondary);
+}
+
+.loginLink a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.loginLink a:hover {
+  text-decoration: underline;
+}
+
+/* Char Count */
+.charCount {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .roleSelector {
+    grid-template-columns: 1fr;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  
+  .checkboxGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .registerCard {
+    padding: var(--spacing-lg);
+  }
+  
+  .registerTitle {
+    font-size: 1.5rem;
+  }
+}

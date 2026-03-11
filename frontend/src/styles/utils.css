@@ -1,0 +1,47 @@
+/* Clases utilitarias responsive */
+
+/* Mobile First - Por defecto */
+
+/* Padding */
+.p-2 { padding: var(--space-sm); }
+.p-4 { padding: var(--space-md); }
+
+/* Margin */
+.m-2 { margin: var(--space-sm); }
+.m-4 { margin: var(--space-md); }
+
+/* Flex */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+
+/* Grid */
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+
+/* Ocultar/ Mostrar por breakpoint */
+.hidden-mobile { display: none; }
+.visible-mobile { display: block; }
+
+/* TABLET - Sobrescribir */
+@media (min-width: 768px) {
+  .p-2-tablet { padding: var(--space-sm); }
+  .p-4-tablet { padding: var(--space-md); }
+  
+  .grid-cols-2-tablet { grid-template-columns: repeat(2, 1fr); }
+  
+  .hidden-tablet { display: none !important; }
+  .visible-tablet { display: block !important; }
+  
+  /* Oculta algunas clases mobile en tablet */
+  .hidden-mobile { display: block; }
+}
+
+/* DESKTOP - Sobrescribir */
+@media (min-width: 1024px) {
+  .p-4-desktop { padding: var(--space-lg); }
+  
+  .grid-cols-4-desktop { grid-template-columns: repeat(4, 1fr); }
+  
+  .hidden-desktop { display: none !important; }
+  .visible-desktop { display: block !important; }
+}
