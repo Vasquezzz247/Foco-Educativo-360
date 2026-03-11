@@ -11,6 +11,7 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isMobile, isTablet } = useResponsive();
 
+  
   // Efecto para detectar scroll
   useEffect(() => {
     const handleScroll = () => {

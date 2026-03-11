@@ -67,6 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'desktop', onItemClick }) => 
     { label: 'Cápsulas', href: '/capsulas' },
     { label: 'Foro', href: '/foro' },
     { label: 'Entrar', href: '/login' },
+    
   ];
   
   // Filtrar items según autenticación y página actual
@@ -80,6 +81,11 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'desktop', onItemClick }) => 
 
   // Determinar vista móvil
   const isMobile = variant === 'mobile';
+
+  const handleDashboardClick = () => {
+    handleClick();
+    navigate('/dashboard');
+  };
 
   return (
     <nav className={`${styles.navbar} ${styles[variant]}`}>
@@ -152,6 +158,22 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'desktop', onItemClick }) => 
                   >
                     <span>👤</span> Mi Perfil
                   </button>
+                  <button
+                    onClick={handleDashboardClick}
+                    className={styles.mobileDashboardButton}
+                  >
+                    <span>📊</span> Mi Espacio
+                  </button>
+                  
+                  {user?.role === 'teacher' && (
+                    <button 
+                      onClick={() => navigate('/contenido-docente')}
+                      className={styles.dropdownItem}
+                    >
+                      <span>📚</span> Gestionar Contenido
+                      </button>
+                    )}
+
                   <button 
                     onClick={handleLogout}
                     className={styles.mobileLogoutButton}
@@ -184,6 +206,22 @@ const Navbar: React.FC<NavbarProps> = ({ variant = 'desktop', onItemClick }) => 
                   >
                     <span>👤</span> Mi Perfil
                   </button>
+                  <button
+                    onClick={handleDashboardClick}
+                    className={styles.dropdownItem}
+                  >
+                    <span>📊</span> Mi Espacio
+                  </button>
+                  
+                  {user?.role === 'teacher' && (
+                    <button 
+                      onClick={() => navigate('/contenido-docente')}
+                      className={styles.dropdownItem}
+                    >
+                      <span>📚</span> Gestionar Contenido
+                    </button>
+                  )}
+
                   <button 
                     onClick={handleLogout}
                     className={styles.dropdownItem}

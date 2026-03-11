@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import PageLayout from '../../components/layout/PageLayout';
+import backgroundImage from '../../assets/images/background/background-site.png';
 import styles from './LoginPage.module.css';
 
 const LoginPage: React.FC = () => {
@@ -52,7 +53,10 @@ const LoginPage: React.FC = () => {
 
 
   return (
-    <PageLayout showBreadcrumb={false}>
+    <PageLayout 
+    showBreadcrumb={false}
+    backgroundImage={backgroundImage}
+    >
       <div className={styles.loginPage}>
         <div className={styles.loginContainer}>
           <h1 className={styles.title}>Iniciar Sesión</h1>

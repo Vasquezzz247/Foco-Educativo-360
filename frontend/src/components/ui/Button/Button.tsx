@@ -1,10 +1,15 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
+  children: React.ReactNode;
+  className?: string;
   variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
 }
@@ -14,6 +19,9 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   size = 'md',
   fullWidth = false,
+  disabled = false,
+  onClick,
+  type = 'button',
   icon,
   iconPosition = 'left',
   className = '',
@@ -21,6 +29,9 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
       className={`
         ${styles.button}
         ${styles[variant]}
