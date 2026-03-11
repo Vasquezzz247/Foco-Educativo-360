@@ -251,6 +251,7 @@ const RegisterPage: React.FC = () => {
         registerData.teacherInfo
       );
       
+
       setSuccess(result.message || '¡Registro exitoso! Serás redirigido...');
       
       // Redirigir después de 2 segundos
@@ -395,9 +396,10 @@ const RegisterPage: React.FC = () => {
       
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
-          <label>Grados que atiendes *</label>
+          <label htmlFor="teacherGrades">Grados que atiendes *</label>
           <select
             multiple
+            id="teacherGrades"
             value={formData.teacherGrades}
             onChange={(e) => {
               const selected = Array.from(e.target.selectedOptions, opt => opt.value);

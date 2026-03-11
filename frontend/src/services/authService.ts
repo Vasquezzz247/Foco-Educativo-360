@@ -11,7 +11,16 @@ export interface RegisterData {
   password: string;
   phone?: string;
   bio?: string;
-  role?: string;
+  role: 'public' | 'student' | 'teacher';
+  studentInfo?: StudentInfo;
+  teacherInfo?: TeacherInfo;
+}
+
+export interface RegisterResponse {
+  token: string;
+  refreshToken?: string;
+  user: User;
+  message?: string;
 }
 
 export interface User {
@@ -25,6 +34,18 @@ export interface User {
   email_verified: boolean;
   created_at: string;
   updated_at: string;
+}
+
+export interface StudentInfo {
+  grade: string;
+  class: 'A' | 'B';
+  teacherId: string;
+}
+
+export interface TeacherInfo {
+  subjects: string[];
+  grades: string[];
+  classes: ('A' | 'B')[];
 }
 
 export interface AuthResponse {
@@ -92,7 +113,10 @@ export const authService = {
   password: string,
   phone?: string,
   bio?: string,
-  role?: string
+  role: 'public' | 'student' | 'teacher' = 'public',
+  studentInfo?: StudentInfo,
+  teacherInfo?: TeacherInfo
+
 ): Promise<RegisterResponse> => {
   try {
     const response = await api.post('/auth/register', { 
@@ -101,7 +125,9 @@ export const authService = {
       password,
       phone,
       bio,
-      role 
+      role,
+      studentInfo,
+      teacherInfo
     });
     const data = response.data;
     

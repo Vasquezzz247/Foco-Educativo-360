@@ -1,14 +1,23 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import { authService } from '../services/authService';
-import type { User, LoginResponse, RegisterResponse } from '../services/authService';
+import type { User, LoginResponse, RegisterResponse, StudentInfo, TeacherInfo } from '../services/authService';
 
 interface  AuthContextType {
   user: User | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<LoginResponse>;
   logout: () => Promise<void>;
-  register: (name: string, email: string, password: string, phone?: string, bio?: string, role?: string) => Promise<RegisterResponse>;
+  register: (
+    name: string, 
+    email: string, 
+    password: string, 
+    phone?: string, 
+    bio?: string, 
+    role?: 'public' | 'student' | 'teacher', 
+    studentInfo?: StudentInfo, 
+    teacherInfo?: TeacherInfo
+  ) => Promise<RegisterResponse>;
   isAuthenticated: boolean;
   token: string | null;
   refreshToken: string | null;
@@ -19,6 +28,7 @@ interface  AuthContextType {
   validateSession: () => Promise<boolean>;
   refreshAuthToken: () => Promise<string | null>;
 }
+
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -244,10 +254,21 @@ useEffect(() => {
     password: string,
     phone?: string,
     bio?: string,
-    role?: string
+    role: 'public' | 'student' | 'teacher' = 'public',
+    studentInfo?: StudentInfo,
+    teacherInfo?: TeacherInfo
   ): Promise<RegisterResponse> => {
     try {
-      const data = await authService.register(name, email, password, phone, bio, role);
+      const data = await authService.register(
+        name, 
+        email, 
+        password, 
+        phone, 
+        bio, 
+        role, 
+        studentInfo, 
+        teacherInfo
+      );
       
       setUser(data.user);
       setToken(data.token);
