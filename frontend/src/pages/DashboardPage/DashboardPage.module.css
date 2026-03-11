@@ -1,0 +1,131 @@
+/* Provisional */
+
+@import '../../styles/variables.css';
+
+.dashboardContainer {
+  padding: 20px;
+}   
+.welcomeMessage {
+  font-size: 24px;
+  margin-bottom: 20px;
+  -webkit-text-stroke: #000000 0.4px;
+}
+.quickActions {
+  display: grid;
+  margin: 30px 0;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.quickActionsTitle {
+  font-size: 18px;
+  margin-bottom: 15px;
+  padding: 0;
+  text-align: center;
+  background-color: #0000003b ;
+  -webkit-text-stroke: #ffffff 0.4px;
+}
+
+.quickActionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.actionCard {
+  justify-self: unset;
+  background-color: #d7e0e4e5;
+  text-align: center;
+  padding: 15px;
+}
+.actionLink {
+  padding: auto;
+  margin: 10px 0;
+  color: #ffffff;
+  text-decoration: underline;
+}
+.actionLink:hover {
+  color: #000000;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.statsSection {
+  margin-top: 40px;
+  padding: 20px;
+}
+.statCard {
+  padding: 20px;
+  text-align: center;
+  border: #000000 solid 1px;
+}
+.statNumber {
+  font-size: 32px;
+  font-weight: bold;
+}
+.statLabel {
+  font-size: 16px;
+  color: #666;
+}
+.recentActivity {
+  margin-top: 40px;
+}
+.activityItem {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.activityDate {
+  font-size: 12px;
+  color: #999;
+}
+.activityDescription {
+  font-size: 14px;
+}
+.activityDescription a {
+  color: #007bff;
+  text-decoration: none;
+}
+.activityDescription a:hover {
+  text-decoration: underline;
+}
+.noActivity {
+  text-align: center;
+  color: #999;
+  padding: 20px 0;
+}
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding: 10px;
+  }
+  .welcomeMessage {
+    font-size: 20px;
+  }
+}
+    .statNumber {
+        font-size: 28px;
+    }
+    
+    .statLabel {
+        font-size: 14px;
+    }
+    
+    .actionCard h4 {
+        font-size: 16px;
+    }
+    .actionCard p {
+        font-size: 13px;
+    }
+    .activityDescription {
+        font-size: 13px;
+    }
+    .activityDate {
+        font-size: 11px;
+    }
+    
