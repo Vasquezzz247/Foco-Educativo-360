@@ -17,6 +17,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import DashboardPage from '././pages/DashboardPage/DashboardPage';
 import UserProfilePage from '././pages/UserProfilePage/UserProfilePage';
+import TeacherContentPage from './pages/TeacherContentPage/TeacherContentPage';
 
 // Componentes UI
 import Background from './components/ui/Background/Background';
@@ -72,6 +73,12 @@ function App() {
             <Route path="/perfil" element={
               <PrivateRoute>
                 <UserProfilePage />
+              </PrivateRoute>
+            } />
+
+            <Route path="/contenido-docente"element={
+              <PrivateRoute>
+                <TeacherContentPage />
               </PrivateRoute>
             } />
             

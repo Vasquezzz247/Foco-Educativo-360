@@ -1,0 +1,341 @@
+.contentManager {
+  max-width: 1200px;
+  margin: 1%;
+  padding: 10px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  background: rgba(0, 0, 0, 0.397);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  -webkit-text-stroke: #ffffff 0.5px;
+}
+
+.subtitle {
+  color:white;
+  font-size: 1.1rem;
+}
+
+/* Access Denied */
+.accessDenied {
+  max-width: 500px;
+  margin: 100px auto;
+  padding: var(--spacing-2xl);
+  text-align: center;
+  background: #FED7D7;
+  border-color: #F56565;
+}
+
+.accessDenied h3 {
+  color: #C53030;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  background: white;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  background: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  color: var(--text-secondary);
+  font-weight: 500;
+  flex: 1;
+  justify-content: center;
+}
+
+.tab:hover {
+  background: gray;
+  color: white;
+}
+
+.tab.active {
+  background: var(--color-primary);
+  color: black;
+}
+
+.tabIcon {
+  font-size: 1.2rem;
+}
+
+/* Content Card */
+.contentCard {
+  padding: 8px;
+}
+
+/* Publish Form */
+.publishForm {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  padding: 4px;
+}
+
+/* Content Type Selector */
+.contentTypeSelector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  padding: 4px;
+}
+
+.typeOption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  background: var(--background-light);
+  border: 2px solid transparent;
+  padding: 4px;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  color: var(--text-secondary);
+}
+
+.typeOption:hover {
+  background: white;
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.typeOption.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: rgb(0, 0, 0);
+}
+
+.typeIcon {
+  font-size: 2rem;
+}
+
+/* Form Sections */
+.formSection {
+  margin-top: var(--spacing-xl);
+  padding-top: 4px;
+  border-top: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 4px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Form Groups */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+  padding: 4px;
+}
+
+.formGroup label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  padding: 4px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  outline: none;
+  padding: 4px;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(184, 234, 255, 0.3);
+}
+
+.formGroup input[type="file"] {
+  padding: 4px;
+  background: var(--background-light);
+}
+
+.formGroup small {
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+}
+
+/* Form Row */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+/* Audience Options */
+.audienceOptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  background: var(--background-light);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  transition: background var(--transition-fast);
+}
+
+.radioLabel:hover {
+  background: white;
+}
+
+.radioLabel input[type="radio"] {
+  width: auto;
+  margin: 0;
+}
+
+/* Checkbox Group */
+.checkboxGroup {
+  display: flex;
+  gap: 4px;
+  padding: var(--spacing-lg);
+  background: var(--background-light);
+  border-radius: var(--border-radius-md);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: auto;
+  padding: auto;
+}
+
+/* Multi Select */
+.multiSelect {
+  width: 100%;
+  padding: 5px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-size: 0.95rem;
+}
+
+.multiSelect option {
+  padding: var(--spacing-md);
+  margin: var(--spacing-md)
+}
+
+/* Form Actions */
+.formActions {
+  display: flex;
+  gap: var(--spacing-5md);
+  justify-content: flex-end;
+  margin: var(--spacing-2xl) 0;
+  padding: var(--spacing-lg);
+  border-top: 2px solid var(--color-border);
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  background: var(--background-light);
+  border-radius: var(--border-radius-lg);
+  color: var(--text-tertiary);
+}
+
+.emptyState p {
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.1rem;
+}
+
+/* Content List */
+.contentList {
+  min-height: 400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+    border-radius: var(--border-radius-lg);
+  }
+
+  .contentTypeSelector {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .formActions button {
+    width: 100%;
+  }
+
+  .checkboxGroup {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .contentTypeSelector {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

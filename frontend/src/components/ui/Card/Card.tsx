@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({
   children,
   variant = 'default',
-  hover = true,
+  hover = false,
   className = '',
 }) => {
   return (
