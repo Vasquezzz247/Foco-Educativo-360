@@ -18,6 +18,8 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import DashboardPage from '././pages/DashboardPage/DashboardPage';
 import UserProfilePage from '././pages/UserProfilePage/UserProfilePage';
 import TeacherContentPage from './pages/TeacherContentPage/TeacherContentPage';
+import StudentPage from './pages/StudentPage/StudentPage';
+import DocentesBoard from './pages/DocentesPage/Board/DocentesBoard';
 
 // Componentes UI
 import Background from './components/ui/Background/Background';
@@ -57,6 +59,8 @@ function App() {
             <Route path="/recursos" element={<ResourcesPage />} />
             <Route path="/recursos/:slug" element={<ResourceDetailPage />} />
             <Route path="/docentes" element={<DocentesPage />} />
+            <Route path="/estudiantes" element={<StudentPage />} />
+            <Route path="/docentes/board" element={<DocentesBoard />} />
             
             {/* === PÁGINAS PROTEGIDAS (requieren login) === */}
             

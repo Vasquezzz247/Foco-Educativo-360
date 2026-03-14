@@ -69,82 +69,9 @@ const LandingPage: React.FC = () => {
         </Container>
       </Section>
       
-      {/* Sección: Para Docentes */}
-      <Section 
-        variant="primary" 
-        padding="4xl"
-        background="gradient"
-        align="center"
-      >
-        <Container size="lg">
-          <div className={styles.teacherSection}>
-            <div className={styles.teacherContent}>
-              <span className={styles.roleBadge}>
-                <span className={styles.badgeEmoji}>🧠</span>
-                Para Docentes
-              </span>
-              <h2 className={styles.teacherTitle}>
-                Potencia tu enseñanza con herramientas basadas en neurociencia
-              </h2>
-              <ul className={styles.benefitsList}>
-                <li>🔄 Creación de cápsulas interactivas</li>
-                <li>📊 Dashboard de seguimiento de estudiantes</li>
-                <li>🎯 Recursos basados en evidencia científica</li>
-                <li>👥 Comunidad de docentes innovadores</li>
-              </ul>
-              <Button variant="secondary" size="lg">
-                Explorar recursos para docentes
-              </Button>
-            </div>
-            <div className={styles.teacherImage}>
-              {/* Placeholder para imagen */}
-              <div className={styles.imagePlaceholder}>
-                <span className={styles.placeholderText}>Dashboard Docente</span>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-      
-      {/* Sección: Para Estudiantes */}
-      <Section 
-        variant="light" 
-        padding="4xl"
-        align="center"
-      >
-        <Container size="lg">
-          <div className={styles.studentSection}>
-            <div className={styles.studentImage}>
-              {/* Placeholder para imagen */}
-              <div className={styles.imagePlaceholder}>
-                <span className={styles.placeholderText}>Interfaz Estudiantil</span>
-              </div>
-            </div>
-            <div className={styles.studentContent}>
-              <span className={styles.roleBadge}>
-                <span className={styles.badgeEmoji}>🎯</span>
-                Para Estudiantes
-              </span>
-              <h2 className={styles.studentTitle}>
-                Aprende de manera efectiva y significativa
-              </h2>
-              <ul className={styles.benefitsList}>
-                <li>🧩 Cápsulas educativas interactivas</li>
-                <li>📈 Seguimiento de tu progreso personal</li>
-                <li>🎮 Gamificación del aprendizaje</li>
-                <li>🤝 Aprendizaje colaborativo</li>
-              </ul>
-              <Button variant="primary" size="lg">
-                Explorar cápsulas educativas
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
-      
       {/* Sección CTA Final */}
       <Section 
-        variant="dark" 
+        variant="transparent" 
         padding="4xl"
         align="center"
         fullWidth

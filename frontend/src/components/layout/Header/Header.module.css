@@ -457,8 +457,6 @@
   padding: 4px 4px 4px 4px;
   cursor: pointer;
   color: rgb(0, 0, 0);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
 .userMenuButton:hover {
@@ -562,7 +560,7 @@
 
 /* Versión scrolled del header */
 .header.scrolled .userMenuButton {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46a1 100%);
+  background: linear-gradient(135deg, #5ab9d8 40%, #4680a1 60%);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -753,6 +751,12 @@
 /* ===== VARIACIONES DE COLOR PARA EL HEADER SCROLLED ===== */
 .header.scrolled .userMenuButton {
   background: linear-gradient(135deg, #553c9a 0%, #4a3080 100%);
+  border: 2px solid;
+  color: #e7e9e9;
+}
+
+.header.scrolled .userName {
+  color: #B8EAFF;
 }
 
 .header.scrolled .mobileUserMenu {

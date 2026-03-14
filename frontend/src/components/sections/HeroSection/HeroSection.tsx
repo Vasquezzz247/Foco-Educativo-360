@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container } from '../../ui/Layout';
 import styles from './HeroSection.module.css';
 import { FaPlay, FaPause, FaArrowRight, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
@@ -12,6 +13,7 @@ const HeroSection: React.FC = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [showControls, setShowControls] = useState(false);
+  const navigate = useNavigate();
 
   const handleVideoPlay = () => {
     if (!videoRef.current) return;
@@ -34,6 +36,14 @@ const HeroSection: React.FC = () => {
 
     videoRef.current.muted = !isMuted;
     setIsMuted(!isMuted);
+  };
+
+  const goToDocentes = () => {
+    navigate('/docentes/board');
+  };
+
+  const goToEstudiantes = () => {
+    navigate('/estudiantes');
   };
 
   return (
@@ -61,7 +71,10 @@ const HeroSection: React.FC = () => {
             </p>
 
             <div className={styles.ctaButtons}>
-              <button className={`${styles.ctaButton} ${styles.primaryCta}`}>
+              <button 
+              className={`${styles.ctaButton} ${styles.primaryCta}`}
+              onClick={goToDocentes}
+              >
                 <span className={styles.buttonIcon}>🧠</span>
                 <span className={styles.buttonContent}>
                   <span className={styles.buttonMain}>Soy Docente</span>
@@ -70,7 +83,10 @@ const HeroSection: React.FC = () => {
                 <FaArrowRight className={styles.buttonArrow} />
               </button>
 
-              <button className={`${styles.ctaButton} ${styles.secondaryCta}`}>
+              <button 
+              className={`${styles.ctaButton} ${styles.secondaryCta}`}
+              onClick={goToEstudiantes}
+              >
                 <span className={styles.buttonIcon}>🎯</span>
                 <span className={styles.buttonContent}>
                   <span className={styles.buttonMain}>Soy Estudiante</span>
