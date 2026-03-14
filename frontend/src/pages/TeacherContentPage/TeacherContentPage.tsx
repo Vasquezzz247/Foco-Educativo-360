@@ -5,7 +5,7 @@ import PageLayout from '../../components/layout/PageLayout';
 import Container from '../../components/ui/Layout/Container';
 import ContentManager from '../../components/TeacherContent/ContentManager';
 import backgroundImage from '../../assets/images/background/background-site.png';
-import styles from './TeacherContentPage.module.css';
+//import styles from './TeacherContentPage.module.css';
 
 const TeacherContentPage: React.FC = () => {
   const { user, isAuthenticated } = useAuth();
